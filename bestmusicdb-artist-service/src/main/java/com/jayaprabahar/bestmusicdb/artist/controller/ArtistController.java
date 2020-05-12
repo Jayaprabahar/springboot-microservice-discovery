@@ -87,15 +87,9 @@ public class ArtistController {
 	 */
 	@PostMapping("/{artistId}/albums")
 	public Album newAlbumForArtist(@PathVariable("artistId") Long artistId, @RequestBody Album album) {
-		Artist existingArtist = artistService.getArtistById(artistId);
-		if (existingArtist != null) {
-			Album newAlbum = webClientBuilder.build().post().uri("/{artistId}", artistId).bodyValue(album).retrieve().bodyToMono(Album.class).block();
-			if (newAlbum != null) {
-				newAlbum.setArtistName(existingArtist.getArtistName());
-				return newAlbum;
-			}
-		}
-		return null;
+		Album newAlbum = webClientBuilder.build().post().uri("/{artistId}", artistId).bodyValue(album).retrieve().bodyToMono(Album.class).block();
+		newAlbum.setArtistName(artistService.getArtistById(artistId).getArtistName());
+		return newAlbum;
 	}
 
 	/**
@@ -106,15 +100,9 @@ public class ArtistController {
 	 */
 	@PutMapping("/{artistId}/albums/{albumId}")
 	public Album updateAlbumForArtist(@PathVariable("artistId") Long artistId, @PathVariable("albumId") Long albumId, @RequestBody Album album) {
-		Artist existingArtist = artistService.getArtistById(artistId);
-		if (existingArtist != null) {
-			Album newAlbum = webClientBuilder.build().put().uri("/{artistId}/{albumId}", artistId, albumId).bodyValue(album).retrieve().bodyToMono(Album.class).block();
-			if (newAlbum != null) {
-				newAlbum.setArtistName(existingArtist.getArtistName());
-				return newAlbum;
-			}
-		}
-		return null;
+		Album newAlbum = webClientBuilder.build().put().uri("/{artistId}/{albumId}", artistId, albumId).bodyValue(album).retrieve().bodyToMono(Album.class).block();
+		newAlbum.setArtistName(artistService.getArtistById(artistId).getArtistName());
+		return newAlbum;
 	}
 
 	/**
@@ -125,18 +113,14 @@ public class ArtistController {
 	 */
 	@GetMapping("/{artistId}/albums")
 	public Page<Album> getAlbumsForArtist(@PathVariable("artistId") Long artistId, @RequestParam("genre") Optional<String> genreLike, Pageable pageable) {
-		Artist existingArtist = artistService.getArtistById(artistId);
-		if (existingArtist != null) {
-			Page<Album> albums = webClientBuilder.codecs(configurer -> configurer.defaultCodecs().enableLoggingRequestDetails(true)).build().get()
-					.uri(uriBuilder -> uriBuilder.path("/" + artistId).queryParams(AlbumServiceQueryBuilder.buildAlbumServiceQuery(artistId, genreLike, pageable)).build())
-					.retrieve().bodyToMono(new ParameterizedTypeReference<CustomPageImpl<Album>>() {
-					}).block();
+		Page<Album> albums = webClientBuilder.codecs(configurer -> configurer.defaultCodecs().enableLoggingRequestDetails(true)).build().get()
+				.uri(uriBuilder -> uriBuilder.path("/" + artistId).queryParams(AlbumServiceQueryBuilder.buildAlbumServiceQuery(artistId, genreLike, pageable)).build()).retrieve()
+				.bodyToMono(new ParameterizedTypeReference<CustomPageImpl<Album>>() {
+				}).block();
 
-			albums.forEach(e -> e.setArtistName(existingArtist.getArtistName()));
+		albums.forEach(e -> e.setArtistName(artistService.getArtistById(artistId).getArtistName()));
 
-			return albums;
-		}
-		return null;
+		return albums;
 	}
 
 }
