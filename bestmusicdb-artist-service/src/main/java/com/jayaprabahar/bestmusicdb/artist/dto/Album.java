@@ -14,11 +14,9 @@ import lombok.NoArgsConstructor;
  * <p> Title : Album.java </p>
  * <p> Description: Data Transfer Object to imitate Album entity coming from other service </p>
  * <p> Created: May 11, 2020 </p>
- * <p> Copyright: KLM Royal Dutch Airlines. All Rights Reserved. (c) 2020 </p>
- * <p> Company: AIRFRANCE-KLM </p>
  * 
- * @version 6.0.0
- * @author <a href="mailto:Jayaprabahar.Chandrasekaran@klm.com">Jayaprabahar</a>
+ * @version 1.0.0
+ * @author <a href="mailto:jpofficial@gmail.com">Jayaprabahar</a>
  */
 @Data
 @NoArgsConstructor
