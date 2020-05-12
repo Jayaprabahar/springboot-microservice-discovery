@@ -5,7 +5,10 @@ package com.jayaprabahar.bestmusicdb.artist.dto;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,8 +22,10 @@ import lombok.NoArgsConstructor;
  * @author <a href="mailto:jpofficial@gmail.com">Jayaprabahar</a>
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Album implements Serializable {
 
 	/**
@@ -39,5 +44,7 @@ public class Album implements Serializable {
 	int year;
 
 	String genre;
+	
+	String resourceUrl;
 
 }
