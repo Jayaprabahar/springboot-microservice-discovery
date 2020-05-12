@@ -37,6 +37,8 @@ public class AlbumService {
 	}
 
 	/**
+	 * Creates new album for the artist id or throw error if already exist
+	 * 
 	 * @param artistId
 	 * @param album
 	 * @return
@@ -55,6 +57,8 @@ public class AlbumService {
 	}
 
 	/**
+	 * Updates existing album for the artist id or throw error if album not found
+	 * 
 	 * @param artistId
 	 * @param albumId
 	 * @param album
@@ -74,6 +78,8 @@ public class AlbumService {
 	}
 
 	/**
+	 * Filter albums based on artist id, genre & other pagination queries
+	 * 
 	 * @param genre
 	 * @param artistId
 	 * @param pageable

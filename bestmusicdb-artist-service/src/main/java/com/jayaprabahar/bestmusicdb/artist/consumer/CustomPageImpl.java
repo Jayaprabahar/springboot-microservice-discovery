@@ -21,7 +21,7 @@ import lombok.Setter;
 /**
  * <p> Project : com.jayaprabahar.bestmusicdb.artist.consumer </p>
  * <p> Title : CustomPageImpl.java </p>
- * <p> Description: Custom PageImpl. Added to resolve no default construtor error due to ParameterizedTypeReference<PageImpl<Album>> error</p>
+ * <p> Description: Custom PageImpl. Added to resolve no default constructor error due to ParameterizedTypeReference<PageImpl<Album>> error</p>
  * <p> Created: May 11, 2020 </p>
  * 
  * @version 1.0.0

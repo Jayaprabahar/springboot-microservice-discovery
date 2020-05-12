@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * <p> Project : com.jayaprabahar.bestmusicdb.artist </p>
  * <p> Title : BestmusicdbArtistServiceApplication.java </p>
- * <p> Description: Artist Service applicaiton. Also an eureka client </p>
+ * <p> Description: Artist Service application. Also an eureka client </p>
  * <p> Created: May 11, 2020 </p>
  * 
  * @version 1.0.0

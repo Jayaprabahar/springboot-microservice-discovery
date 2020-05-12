@@ -48,6 +48,7 @@ public class ArtistController {
 	/**
 	 * @param artistService
 	 * @param webClientBuilder
+	 * @param discogApiProperties
 	 */
 	@Autowired
 	public ArtistController(ArtistService artistService, WebClient.Builder webClientBuilder, DiscogApiProperties discogApiProperties) {
@@ -57,6 +58,8 @@ public class ArtistController {
 	}
 
 	/**
+	 * Creates new artist throw error if already exist
+	 * 
 	 * @param artist
 	 * @return
 	 */
@@ -66,6 +69,8 @@ public class ArtistController {
 	}
 
 	/**
+	 * Updates existing artist or throw error if not found
+	 * 
 	 * @param artistId
 	 * @param artist
 	 * @return
@@ -76,6 +81,8 @@ public class ArtistController {
 	}
 
 	/**
+	 * Filter artists based on artist name like, other pagination queries
+	 * 
 	 * @param artistName
 	 * @param pageable
 	 * @return
@@ -86,6 +93,8 @@ public class ArtistController {
 	}
 
 	/**
+	 * Creates new album for the artist id or throw error if already exist
+	 * 
 	 * @param artistId
 	 * @param album
 	 * @return
@@ -104,6 +113,8 @@ public class ArtistController {
 	}
 
 	/**
+	 * Updates existing album for the artist id or throw error if album not found
+	 * 
 	 * @param artistId
 	 * @param albumId
 	 * @param album
@@ -123,6 +134,7 @@ public class ArtistController {
 	}
 
 	/**
+	 * Filter albums based on artist id, genre & other pagination queries
 	 * 
 	 * @param artistId
 	 * @param genreLike

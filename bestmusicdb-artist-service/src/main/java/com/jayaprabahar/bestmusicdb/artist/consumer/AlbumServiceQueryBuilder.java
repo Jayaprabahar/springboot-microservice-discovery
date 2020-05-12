@@ -21,6 +21,8 @@ import org.springframework.util.MultiValueMap;
 public class AlbumServiceQueryBuilder {
 
 	/**
+	 * MultiValueMap creator for album service filter
+	 * 
 	 * @param artistId
 	 * @param genreLike
 	 * @param pageable
@@ -37,6 +39,8 @@ public class AlbumServiceQueryBuilder {
 	}
 	
 	/**
+	 * MultiValueMap creator for discog service filter
+	 * 
 	 * @param key
 	 * @param secret
 	 * @param artistName

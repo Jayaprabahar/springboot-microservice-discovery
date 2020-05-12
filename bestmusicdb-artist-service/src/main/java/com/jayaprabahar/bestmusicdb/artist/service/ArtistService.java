@@ -35,6 +35,8 @@ public class ArtistService {
 	}
 
 	/**
+	 * Creates new artist throw error if already exist
+	 * 
 	 * @param artist
 	 * @return
 	 */
@@ -50,6 +52,8 @@ public class ArtistService {
 	}
 
 	/**
+	 * Updates existing artist or throw error if not found
+	 * 
 	 * @param artistId
 	 * @param artist
 	 * @return
@@ -62,6 +66,8 @@ public class ArtistService {
 	}
 
 	/**
+	 * Filter artists based on artist name like, other pagination queries
+	 *  
 	 * @param artistName
 	 * @param pageable
 	 * @return
@@ -71,6 +77,8 @@ public class ArtistService {
 	}
 
 	/**
+	 * Find artist information by atistId
+	 * 
 	 * @param artistId
 	 * @return
 	 */

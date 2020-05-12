@@ -30,6 +30,8 @@ import reactor.netty.tcp.TcpClient;
 public class AlbumServiceConsumer {
 
 	/**
+	 * Creates webclient with 5 second time delay for album service
+	 * 
 	 * @return
 	 */
 	@Bean

@@ -25,10 +25,13 @@ import com.jayaprabahar.bestmusicdb.album.dao.AlbumKey;
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, AlbumKey> {
 
+	// Find albums by artistId & title
 	List<Album> findAllByArtistIdAndTitle(Long artistId, String title);
 
+	// Find albums by artistId & albumId
 	List<Album> findAllByArtistIdAndAlbumId(Long artistId, Long albumId);
 
+	// Find albums by artistId, genre & pagination criteria with contains and case insensitive search
 	Page<Album> findAllByArtistIdAndGenreContainingIgnoreCase(Long artistId, String genre, Pageable pageable);
 
 }

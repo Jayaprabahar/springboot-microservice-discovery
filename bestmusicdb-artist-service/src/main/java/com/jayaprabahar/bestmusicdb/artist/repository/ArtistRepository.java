@@ -24,8 +24,10 @@ import com.jayaprabahar.bestmusicdb.artist.dao.Artist;
 @Repository
 public interface ArtistRepository extends JpaRepository<Artist, Long> {
 
+	// Find artists by artistName
 	List<Artist> findAllByArtistNameIgnoreCase(String artistName);
 
+	// Find artists by artistName like & pagination criteria with contains and case insensitive search
 	Page<Artist> findAllByArtistNameContainingIgnoreCase(String artistName, Pageable pageable);
 
 }

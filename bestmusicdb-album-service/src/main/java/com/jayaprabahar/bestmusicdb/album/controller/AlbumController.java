@@ -42,6 +42,8 @@ public class AlbumController {
 	}
 
 	/**
+	 * Creates new album for the artist id or throw error if already exist
+	 * 
 	 * @param artistId
 	 * @param album
 	 * @return
@@ -52,6 +54,8 @@ public class AlbumController {
 	}
 
 	/**
+	 * Updates existing album for the artist id or throw error if album not found
+	 * 
 	 * @param artistId
 	 * @param albumId
 	 * @param album
@@ -63,13 +67,15 @@ public class AlbumController {
 	}
 
 	/**
+	 * Filter albums based on artist id, genre & other pagination queries
+	 *  
 	 * @param artistId
 	 * @param genreLike
 	 * @param pageable
 	 * @return
 	 */
 	@GetMapping("/{artistId}")
-	public Page<Album> listAndFilterAlbums(@PathVariable("artistId") Long artistId, @RequestParam("genre") Optional<String> genreLike, Pageable pageable) {
+	public Page<Album> filterAlbums(@PathVariable("artistId") Long artistId, @RequestParam("genre") Optional<String> genreLike, Pageable pageable) {
 		return albumService.getAllAlbumsByGenreArtist(genreLike.orElse(""), artistId, pageable);
 	}
 
