@@ -35,5 +35,26 @@ public class AlbumServiceQueryBuilder {
 
 		return queryMap;
 	}
+	
+	/**
+	 * @param key
+	 * @param secret
+	 * @param artistName
+	 * @param albumName
+	 * @param pageable
+	 * @return
+	 */
+	public static MultiValueMap<String, String> buildDiscogQueryUrl(String key, String secret, String artistName, String albumName) {
+		MultiValueMap<String, String> queryMap = new LinkedMultiValueMap<>();
+		queryMap.add("key", key);
+		queryMap.add("secret", secret);
+		queryMap.add("artist", artistName);
+		queryMap.add("title", albumName);
+		
+		// Always hit the master release
+		queryMap.add("release", "master");
+
+		return queryMap;
+	}
 
 }

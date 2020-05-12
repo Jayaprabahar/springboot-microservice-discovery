@@ -43,7 +43,12 @@ public class AlbumService {
 	 */
 	public Album createAlbum(Long artistId, Album album) {
 		if (CollectionUtils.isEmpty(albumRepository.findAllByArtistIdAndTitle(artistId, album.getTitle()))) {
-			return albumRepository.save(Album.builder().artistId(artistId).title(album.getTitle()).year(album.getYear()).genre(album.getGenre()).build());
+			return albumRepository.save(Album.builder()
+					.artistId(artistId)
+					.title(album.getTitle())
+					.year(album.getYear())
+					.genre(album.getGenre())
+					.build());
 		} else {
 			throw new AlbumAlreadyExistException(album.getTitle(), artistId);
 		}

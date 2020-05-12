@@ -40,7 +40,10 @@ public class ArtistService {
 	 */
 	public Artist createArtist(Artist artist) {
 		if (CollectionUtils.isEmpty(artistRepository.findAllByArtistNameIgnoreCase(artist.getArtistName()))) {
-			return artistRepository.save(Artist.builder().artistName(artist.getArtistName()).build());
+			return artistRepository.save(Artist
+					.builder()
+					.artistName(artist.getArtistName())
+					.build());
 		} else {
 			throw new ArtistAlreadyExistException(artist.getArtistName());
 		}
@@ -52,12 +55,10 @@ public class ArtistService {
 	 * @return
 	 */
 	public Artist updateArtist(Long artistId, Artist artist) {
-		artistRepository.findById(artistId).ifPresentOrElse(entity -> {
-			artist.setArtistId(entity.getArtistId());
-			artistRepository.save(artist);
-		}, () -> new ArtistNotFoundException(artistId));
+		Artist entity = artistRepository.findById(artistId).orElseThrow(() -> new ArtistNotFoundException(artistId));
+		entity.setArtistName(artist.getArtistName());
 
-		return artist;
+		return artistRepository.save(entity);
 	}
 
 	/**
